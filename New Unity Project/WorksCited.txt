@@ -1,0 +1,5 @@
+Sites I used for help:
+
+http://answers.unity3d.com/questions/1091789/how-do-i-make-my-player-jump-at-a-fixed-height-and.html
+
+http://coffeebreakcodes.com/character-control-with-keyboard-c/

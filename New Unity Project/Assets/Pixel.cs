@@ -7,11 +7,14 @@ public class Pixel : MonoBehaviour {
     public bool grounded;
     public float jumpHeight;
     public float moveVelocity;
+    public string message = "You died.";
+    public float displayTime;
+    public bool displayMessage = false;
 
     // Use this for initialization
     void Start () {
         rb = GetComponent<Rigidbody2D>();
-    }
+      }
 
     //check for collision between enemy and player
     void OnCollisionEnter2D(Collision2D collision)
@@ -19,11 +22,21 @@ public class Pixel : MonoBehaviour {
         Debug.Log("inside the func2");
         if (collision.gameObject.tag == "Enemy")
         {
+            displayMessage = true;
+            displayTime = 3;
             Destroy(collision.gameObject);
         }
     }
 
-    // Update is called once per frame
+    void OnGUI()
+    {
+        if (displayMessage)
+        {
+            GUI.Label(new Rect(Screen.width / 2, Screen.height / 2, 200f, 200f), message);
+        }
+    }
+
+        // Update is called once per frame
     void Update()
     {
         if (Input.GetKey(KeyCode.RightArrow))
@@ -52,6 +65,13 @@ public class Pixel : MonoBehaviour {
         {
             grounded = true;
         }
-   }
+
+        //count down for how long message is on the screen
+        displayTime -= Time.deltaTime;
+        if (displayTime <= 0.0)
+        {
+            displayMessage = false;
+        }
+    }
 
 }
