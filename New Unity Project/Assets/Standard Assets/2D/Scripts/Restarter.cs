@@ -8,7 +8,7 @@ namespace UnityStandardAssets._2D
     {
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.tag == "pixelChar")
+            if (other.tag == "pixelChar" || other.name == "8bitChar")
             {
                 SceneManager.LoadScene(SceneManager.GetSceneAt(0).name);
             }
